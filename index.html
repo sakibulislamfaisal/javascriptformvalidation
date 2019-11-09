@@ -1,0 +1,292 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Form Validation in Javascript</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<style>
+	  .input{
+	       width:50%;
+		   margin-right:4px;
+	  }
+	  body{
+	      margin:0;
+		  padding:0;
+		
+	  }
+	  #showname{
+	     color:red;
+		 font-size:18px;
+	  }
+	  #showpass{
+	    color:red;
+		font-size:18px;
+	  }
+	  #conpass{
+	    color:red;
+		font-size:18px;
+	  }
+	  #showemail{
+	    color:red;
+		font-size:18px;
+	  }
+	  #showphone{
+	    color:red;
+		font-size:18px;
+	  }
+	  #showcountry{
+	    color:red;
+		font-size:18px;
+	  }
+	  #showcomment{
+	    color:red;
+		font-size:18px;
+	  }
+	</style>
+</head>
+<body>
+<section class="">
+      <div class="container ">
+	  <div class="row">
+	   
+	  
+	  <div class="col-md-12 ">
+	  
+	  <form action="" class="input" name="form" onsubmit="return validateform()">
+	      <h3 class="text-danger text-center">Javascript Form Validation</h3> <br />
+		  
+		  
+	     <div class="form-group">
+		   <label for="names">Username :</label>
+		   <input type="text" id="names" name="name" class="form-control "  />
+		   <span id="showname" ></span>
+		 </div>
+		 
+		 
+		  <div class="form-group">
+		   <label for="text">Email :</label>
+		   <input type="text" id="email" name="email" class="form-control "  />
+		   <span id="showemail" ></span>
+		 </div>
+		 
+		 
+		 <div class="form-group">
+		    <label for="password">Password :</label>
+			<input type="password" class="form-control" name="password1" id="password" />
+			<span id="showpass" ></span>
+		 </div>
+		 
+		 
+		  <div class="form-group">
+		    <label for="confirmpassword">Confirm Password :</label>
+			<input type="password" class="form-control" name="password2" id="confirmpassword" />
+			<span id="conpass" ></span>
+		 </div>
+		 
+		 
+		 
+		 <div class="form-group">
+		    <label for="select">Select Country:</label>
+		   <select name="select" id="selected" class="form-control" >
+		    <option value="0" class="bg-success " active  >Select one</option> 
+			<option value="1">Bangladesh</option> 
+			<option value="2">Canada</option>
+			<option value="3">Brazil</option>
+		   </select>
+		   <span id="showcountry" ></span>
+		 </div>
+		 
+	
+	     <div class="form-group">
+		   <label for="comment">Comment :</label>
+		   <input type="text" id="comment" name="comment" class="form-control "  />
+		   <span id="showcomment" ></span>
+		 </div>
+		 
+		 
+		  <div class="form-group">
+		   <label for="phone">Phone :</label>
+		   <input type="text" id="phone" name="name" class="form-control "  />
+		   <input type="checkbox" id="check" value="call" name="notcall" onclick=" enabledisable(this)" /> Please do not call.
+		   <span id="showphone" ></span>
+		 </div>
+		
+		 <div>
+		   <input type="submit" value="Submit" class="btn btn-primary mb-5 p-2" />
+		   <input type="reset" value="Refresh" class="btn btn-danger mb-5 p-2" />
+		 </div>
+	  
+	  
+	 
+	  </form>  
+	  </div>
+	  </div>
+	  </div>
+	  <section>
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity"sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+ <!--Start Javascript Part validation-->
+ 
+ <script type="text/javascript">
+ 
+   function validateform(){
+   
+     var username         = document.getElementById("names").value ;
+	 var usernamecorrect  = /^[A-Za-z]+$/;
+	 var email            = document.getElementById("email").value;
+	 var password         = document.getElementById("password").value;
+	 var conpass          = document.getElementById("confirmpassword").value;
+	 var phone            = document.getElementById("phone").value;
+	 var country          = document.form.select;
+	 var comment          = document.getElementById("comment").value;
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 if(username==""){
+	   document.getElementById("showname").innerHTML = "*** Please Enter Your Name.";
+	   return false ;
+	 
+	 }
+	 if(username.length<4){
+	     document.getElementById("showname").innerHTML = "*** Username must be at least 4 Character.";
+		 return false ;
+	 }
+	 if(username.length>20){
+	  document.getElementById("showname").innerHTML = "***Username between 4-20 character are allowed." ;
+	  return false ;
+	 }
+	 if(username.match(usernamecorrect))
+	 
+	true ;
+	 
+	 else {
+	    document.getElementById("showname").innerHTML = "***Username are only character not number." ;
+	  return false ;
+	 }
+	 
+	 
+	 
+	 if(email==""){
+	   document.getElementById("showemail").innerHTML = "***Please Enter Your E-mail.";
+	   return false ;
+	 }
+	 
+	else if(email.indexOf("@",0)<0){
+	   document.getElementById("showemail").innerHTML = "Please enter valid E-mail";
+	   return false;
+	 }
+	else  if(email.indexOf(".",0)<0){
+	   document.getElementById("showemail").innerHTML = "Please enter valid E-mail";
+	   return false;
+	 }
+	 
+	 
+	 
+	 
+	 
+	 if(password == ""){
+	   document.getElementById("showpass").innerHTML = "*** Please Enter Your Password.";
+	   return false;
+	 }
+     if(password.length<8){
+	  document.getElementById("showpass").innerHTML = "*** Password must be at least 8 characters.";
+	  return false ;
+	 }
+	  if(password.length>30){
+	  document.getElementById("showpass").innerHTML = "*** Password are allowed between 8-30 character .";
+	  return false ;
+	 }
+	 
+	 if(conpass==""){
+	  document.getElementById("conpass").innerHTML = "*** Please fill this confirm password";
+		return false;
+	 }
+	if(password!=conpass){
+	  document.getElementById("conpass").innerHTML = "*** Password are not match";
+		return false;
+	}
+	else true ;
+	
+	
+	
+	if(country.selectedIndex < 1){
+	  document.getElementById("showcountry").innerHTML ="**How can we help you?";
+	  return false;
+	}
+	
+	
+	if(phone== "" && check.checked==false){
+	  document.getElementById("showphone").innerHTML = "***Please enter your phone number.";
+	  return false;
+	}
+	 if(phone.length<11){
+	document.getElementById("showphone").innerHTML = "***Mobile number must be 11 digit are allowed.";
+	  return false;
+	}
+	 if(phone.length>11){
+	document.getElementById("showphone").innerHTML = "***Mobile number must be 11 digit are allowed.";
+	  return false;
+	}
+	if(isNaN(phone)){
+	document.getElementById("showphone").innerHTML = "***Mobile number must be numeric value.";
+	  return false;
+	}
+	
+	
+	 if(phone.charAt(0)!=0 && phone.charAt(1)!=1){
+	document.getElementById("showphone").innerHTML = "***Mobile number are not valid form.";
+	  return false;
+	}
+	
+	  
+	if(comment == ""){
+	document.getElementById("showcomment").innerHTML = "***Please fill the comment form.";
+	  return false;
+	}
+	
+	
+   }
+   
+   function enabledisable(checkbox){
+       if(checkbox.checked==true){
+	   phone.disabled=true;
+	   document.getElementById("showphone").innerHTML = "***Mobile number are not needed.";
+	  }
+	  else {
+	   phone.disabled=false;
+	   document.getElementById("showphone").innerHTML = "***Mobile number are  needed.";
+	   
+	  }
+	  
+   }
+ 
+ </script>
+
+
+</body>
+</html>
